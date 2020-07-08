@@ -29,7 +29,7 @@ window.addEventListener('scroll', () => {
     }
 })
 
-//Event 3 (click): add border to parent container when button is clicked
+//Event 3 (click): add shadow to parent container when button is clicked
 const allBtns = document.querySelectorAll('.content-pick .btn');
 allBtns.forEach(btn => btn.addEventListener('click', () => {
     if (btn.parentNode.style.boxShadow === "") {
@@ -122,4 +122,16 @@ window.addEventListener('load', () => {
 //Event 10 (resize) change font color when window changes size
 window.addEventListener('resize', () => {
     document.body.style.color = randomColor()
-})
+});
+
+//Nested event listeners
+document.body.addEventListener('click', () => {
+    console.log("body clicked")
+    document.body.style.color = randomColor();
+});
+
+allLinks.forEach(link => link.addEventListener('click', (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log("link clicked")
+}))
